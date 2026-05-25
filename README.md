@@ -100,26 +100,53 @@ Switch anytime with `/compact <level>`. Default is **dev**.
 
 ## Installation
 
-### Option A — Claude Project Instructions *(recommended, works today)*
+### Option A — ZIP Upload via Claude.ai ⭐ *(easiest — no Git needed)*
 
-1. Go to **claude.ai → Projects → New Project**
-2. Click **"Add Instructions"**
-3. Paste the full contents of [`SKILL.md`](./SKILL.md)
-4. Every conversation in that project now has compact mode available
+1. On this repo page, click **`Code` → `Download ZIP`**
+2. Go to **[claude.ai](https://claude.ai) → Customize → Skills → Add Skill**
+3. Upload the downloaded ZIP file
+4. Done — `/compact` is now available across all your Claude conversations
 
-### Option B — Claude Code (local skills directory)
+> No terminal. No Git. Works on any OS — Windows, Mac, Linux.
 
-```bash
+---
+
+### Option B — Claude Code *(for developers)*
+
+```powershell
+# Windows (PowerShell)
 git clone https://github.com/raushan1107/compact-mode-claude-skill.git
-cp -r compact-mode-claude-skill ~/.claude/skills/compact-mode
-claude skills --list   # verify
+cp -r compact-mode-claude-skill $env:USERPROFILE\.claude\skills\compact-mode
 ```
 
-### Option C — API / Custom App
+```bash
+# Mac / Linux
+git clone https://github.com/raushan1107/compact-mode-claude-skill.git
+cp -r compact-mode-claude-skill ~/.claude/skills/compact-mode
+```
+
+Verify inside Claude Code by typing:
+```
+claude skills
+```
+You should see `/compact` listed in the skills table.
+
+---
+
+### Option C — Claude Project Instructions *(no Skills feature needed)*
+
+1. Go to **claude.ai → Projects → New Project**
+2. Click **"Set project instructions"**
+3. Paste the full contents of [`SKILL.md`](./SKILL.md)
+4. Every conversation in that project now has compact mode active
+
+---
+
+### Option D — API / Custom App
 
 ```python
 skill = open("SKILL.md").read()
-# Prepend to your system prompt
+# Prepend to your existing system prompt
 system_prompt = skill + "\n\n" + your_existing_system_prompt
 ```
 
