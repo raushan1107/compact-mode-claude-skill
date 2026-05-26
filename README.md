@@ -51,11 +51,11 @@ less words     be brief     skip fluff
 
 Switch anytime with `/compact <level>`. Default is **dev**.
 
-| Level | Style |
-|---|---|
-| `lite` | No filler or hedging. Full sentences kept. Professional but tight. |
-| `dev` | Drop articles. Fragments OK. Short synonyms. Stack abbreviations. |
-| `ultra` | Max abbreviation (DB/auth/cfg/fn/req/res/svc). Arrows for causality. One word when one word enough. |
+| Level | Why-before-How | Style |
+|---|---|---|
+| `lite` | ✅ Always | No filler or hedging. Full sentences. 1-line reason before every answer. |
+| `dev` | ⚡ Only if non-obvious | Drop articles. Fragments OK. Short synonyms. Stack abbreviations. |
+| `ultra` | ❌ Off | Max abbreviation. Arrows for causality. Pure output — zero explanation overhead. |
 
 ---
 
@@ -65,9 +65,11 @@ Switch anytime with `/compact <level>`. Default is **dev**.
 
 | Level | Response |
 |---|---|
-| **lite** | "You're hitting the token-per-minute limit on your deployment. Implement exponential backoff or increase your TPM quota in Azure AI Foundry." |
-| **dev** | "TPM limit hit on deployment. Add exponential backoff or raise TPM quota in AI Foundry portal." |
-| **ultra** | "TPM quota hit → 429. Backoff impl or ↑ TPM in AI Foundry." |
+| **lite** | "TPM quota on your deployment is exhausted — Azure throttles when you exceed it. Implement exponential backoff or increase your TPM quota in Azure AI Foundry." |
+| **dev** | "TPM limit hit. Add exponential backoff or raise TPM quota in AI Foundry portal." |
+| **ultra** | "TPM quota hit → 429. Backoff or ↑ TPM in AI Foundry." |
+
+Notice: `lite` includes the reason why 429 happens. `dev` skips it if obvious. `ultra` drops it entirely — pure fix, minimum tokens.
 
 ---
 
@@ -90,7 +92,7 @@ Switch anytime with `/compact <level>`. Default is **dev**.
 | Feature | `"be brief"` | caveman-skill | **compact-mode** |
 |---|---|---|---|
 | Drops filler / hedging | ✅ | ✅ | ✅ |
-| "Why before How" preserved | ❌ | ❌ | ✅ |
+| Why-before-How (level-aware) | ❌ | ❌ | ✅ lite=always · dev=smart · ultra=off |
 | Protects learner-facing content | ❌ | ❌ | ✅ |
 | Stack-specific abbreviations | ❌ | ❌ | ✅ |
 | Context-aware auto-exit | ❌ | ❌ | ✅ |
