@@ -1,7 +1,7 @@
 ---
 name: compact-mode
-description: Cuts Claude verbosity 60-75%. Drops filler/hedging. Preserves "why before how". Auto-exits for learner-facing content. Trigger: /compact, "compact mode", "save tokens", "be brief".
-author: Raushan Ranjan · RR Skillverse (rrskillverse.in)
+description: "Cuts Claude verbosity 60-75%. Drops filler and hedging. Preserves why-before-how principle. Auto-exits for learner-facing content. Trigger: /compact, compact mode, save tokens, be brief."
+author: "Raushan Ranjan · RR Skillverse (rrskillverse.in)"
 version: 1.1.0
 ---
 
